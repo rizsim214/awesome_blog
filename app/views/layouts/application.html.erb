@@ -5,28 +5,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-        <script>
-          window.onload = function() {
-              if (window.jQuery) {
-                  // jQuery is loaded
-                  alert("Jquery works!");
-              } else {
-                  // jQuery is not loaded
-                  alert("Jquery doesn't Work");
-              }
-          }
-         </script>
-        
+        <%= render 'layouts/navbar' %>
+            <div class="container">
+               <%= yield %>
+            </div>
+        <%= render 'layouts/footer' %>        
   </body>
 
 </html>
