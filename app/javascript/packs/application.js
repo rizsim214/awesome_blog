@@ -4,8 +4,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import "bootstrap"
-import jquery from "jquery"
-window.$ = window.jquery = jquery
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
