@@ -1,28 +1,6 @@
 
 <% provide(:title, "Sign Up") %>
     
-    <form action="" class="col-md-6 mx-auto mt-3">
-        <div class="text-center">
-            <h3>Sign Up</h3>
-            <p>Join us for free!</p>
-        </div>  
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" class="form-control" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" class="form-control" placeholder="example@example.com">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password</label>
-            <input type="password" id="pwd" class="form-control" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="pwdConfirm">Password Confirmation</label>
-            <input type="password" id="name" class="form-control" placeholder="Password Confirmation">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-    </form>
+    <%= render 'users/signup_form' %>
 
  
