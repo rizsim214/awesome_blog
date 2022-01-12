@@ -13,10 +13,17 @@
 
   <body>
         <%= render 'layouts/navbar' %>
-            <div class="container">
-               <%= yield %>
-            </div>
+        <div class="container mt-3">
+            <% if flash.any? %>
+                <% flash.each do |type , msg| %>
+                    <div class="alert alert-<%= type %>">
+                        <%= msg %>
+                    </div>
+                <% end %>
+            <% end %>
+            
+            <%= yield %>
+        </div>
         <%= render 'layouts/footer' %>        
   </body>
-
 </html>

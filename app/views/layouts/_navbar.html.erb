@@ -1,25 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-  <div class="container-fluid">
-    <%= link_to "Awesome Blog", root_path , class: "navbar-brand col-md-2"%>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav d-flex justify-content-end col-md-10">
-        <li class="nav-item">
-          <%= link_to "Home", root_path , class: "nav-link"%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "About", about_path , class: "nav-link "%>
-        </li>
-       <li class="nav-item">
-          <%= link_to "Contact", contact_path , class: "nav-link "%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Login", new_session_path , class: "nav-link "%>
-        </li>
-      </ul>
-          <%= link_to "Sign Up", new_user_path , class: "btn btn-outline-light"%>
+    <div class="container">
+        <%= link_to "Awesome Blog", root_path , class: "navbar-brand"%>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <%= link_to "Home", root_path , class: "nav-link"%>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "About", about_path , class: "nav-link "%>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Contact", contact_path , class: "nav-link"%>
+                </li>
+                <% if logged_in? %>
+                    <li class="nav-item">
+                        <div class="dropdown pt-2 ml-1">
+                                <a class="text-light align-content-center dropdown-toggle" href="#" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                                        <%= current_user.name %>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <%= link_to "Profile" , "#profile", class: "dropdown-item" %>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Settings" , "#settings", class: "dropdown-item" %>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Logout" , logout_path, method: :delete, class: "dropdown-item" %>
+                                    </li>
+                                </ul>
+                            </div>
+                    </li>  
+                    <% else %>
+                        <li class="nav-item">
+                            <%= link_to "Login", new_session_path , class: "nav-link "%>
+                        </li>
+                        <li>
+                            <%= link_to "Sign Up", new_user_path , class: "btn btn-outline-light ml-2"%>
+                        </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
