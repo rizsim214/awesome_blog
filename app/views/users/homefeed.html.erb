@@ -1,0 +1,26 @@
+<% provide(:title , "Profile") %>
+
+<div class="card col-4">
+    <%= link_to gravatar_for(current_user) , class: "rounded-circle mx-auto" %>
+    <div class="card-body text-center">
+        <h3 class="card-title"><%= current_user.name %></h3>
+        <h6 class="card-subtitle pb-2  text-muted border-bottom"><%= current_user.email %></h6>
+    </div>
+    <div class="card-body">
+        <ul class="d-flex justify-content-between align-items-center my-1 border-bottom ">
+            <div class="row">
+                <li><%= link_to pluralize(20, "micropost") , "#" , class:"text-primary " %></li>
+                <li><%= link_to pluralize(17, "follower") , "#" , class:"text-primary " %></li>
+                <li><%= link_to pluralize(2, "following") , "#" , class:"text-primary " %></li>
+            </div>
+        </ul>
+    </div>
+    <div class="card-body">
+        <%= form_with(url: root_path , local: true) do |form| %>
+            <%= form.text_area :post, size: "70x5" , class: "form-control mb-2" , placeholder: "Share your thought" %>
+            <%= form.file_field :picture %>
+            <%= form.submit "Post" , class:"btn btn-primary btn-block mt-2" %>
+        <% end %>
+    </div>
+</div>
+        

@@ -1,11 +1,18 @@
 
-    <%= form_with(model: @user , local:true ) do |form| %>
+    <%= form_with(model: @user , local: true ) do |form| %>
         <div class="col-md-5 mx-auto mt-2 mb-5">
-            <div class="text-center">
-                <h3>Sign Up</h3>        
-                <p>Join us for free!</p>
-                
-            </div>  
+            <% if !logged_in? %>
+                <div class="text-center">
+                    <h3>Sign Up</h3>        
+                    <p>Join us for free!</p>
+                </div>  
+            <% else %>
+                <div class="text-center">
+                    <h3>Settings</h3>        
+                    <p>Update your account credentials</p>
+                </div>  
+            <% end %>
+            
             <%= render "shared/error_messages" , object: @user %>
             <div class="form-group">
                 <%= form.label :name , "Name" %>
@@ -19,11 +26,16 @@
                 <%= form.label :password , "Password" %>
                 <%= form.password_field :password , { class: "form-control" , placeholder: "Password" } %>
             </div>
+        <% if !logged_in? %>
             <div class="form-group">
                 <%= form.label :password_confirmation , "Password Confirmation" %>
                 <%= form.password_field :password_confirmation , { class: "form-control" , placeholder: "Password Confirmation" } %>
             </div>
             <%= form.submit "Create an Account" , { class: "btn btn-primary btn-block" } %>
+        <% else %>
+             <%= form.submit "Update Account" , { class: "btn btn-primary btn-block" } %>
+        <% end %>
+           
         </div>
     <% end %>
     

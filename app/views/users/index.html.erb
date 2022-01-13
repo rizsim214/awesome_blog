@@ -1,0 +1,13 @@
+<% provide(:title , "Members") %>
+
+<h1 class="text-center py-3">Members</h1>
+    <div class="row">
+        <% @users.each do |user| %>
+            <div class="card col-6">
+                <div class="card-body border-0">
+                    <%= image_tag gravatar_for(user), class: "rounded-circle mr-2 " %>
+                    <%= link_to user.name , user_path(user) %>
+                </div>
+            </div>
+        <% end %>
+    </div>  
