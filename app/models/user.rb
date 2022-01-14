@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  has_many :microposts      
   has_secure_password
+
   before_save { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }

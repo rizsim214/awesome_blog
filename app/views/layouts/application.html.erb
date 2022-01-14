@@ -16,7 +16,7 @@
         <div class="container mt-3">
             <% if flash.any? %>
                 <% flash.each do |type , msg| %>
-                    <div class="alert alert-<%= type %>">
+                    <div class="alert alert-<%= type %>" role="alert">
                         <%= msg %>
                     </div>
                 <% end %>
