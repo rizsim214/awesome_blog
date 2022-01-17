@@ -1,12 +1,12 @@
 class MicropostsController < ApplicationController
 	def create	
 		@micropost = current_user.microposts.new(micropost_params)
-			if @micropost.save
-				redirect_to root_url
-			else
-				@microposts = current_user.microposts
-				render "users/homefeed"
-			end
+		if @micropost.save
+			redirect_to root_url
+		else
+			@microposts = current_user.microposts
+			render "users/homefeed"
+		end
 	end
 
 	def destroy
@@ -14,7 +14,7 @@ class MicropostsController < ApplicationController
 		if @micropost 
 			@micropost.destroy
 			flash[:info] = "Successfully Deleted Micropost!!"
-			redirect_to root_url
+			redirect_to request.referer
 		end
 	end
 private 

@@ -13,4 +13,18 @@ class User < ApplicationRecord
                                       format: { with: EMAIL_REGEX },
                                       uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_nil: true
+
+
+  def follow(other_user)
+    Relationship.create(follower_id: id , followed_id: other_user.id)
+  end 
+
+  def relationship(other_user)
+    Relationship.find_by(follower_id: id , followed_id: other_user.id)    
+  end
+  
+  def micropost_count
+    Micropost.count(:user_id)
+  end
+ 
 end
